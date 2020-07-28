@@ -1,22 +1,22 @@
 ---
-to: src/contexts/<%= name %>.jsx
+to: src/contexts/<%= values.context %>.jsx
 ---
 
 import React, { useMemo, useContext, useReducer, createContext } from 'react';
 
-const <%= name %> = createContext();
+const <%= values.context %> = createContext();
 
-export function <%= name %>Provider({ children }) {
-  const [<%= h.inflection.camelize(name, true) %>, set<%= name %>] = useState(null);
-  const value = useMemo(() => ({ <%= h.inflection.camelize(name, true) %>, set<%= name %> }), [<%= h.inflection.camelize(name, true) %>, set<%= name %>]);
+export function <%= values.context %>Provider({ children }) {
+  const [<%= h.inflection.camelize(values.context, true) %>, set<%= values.context %>] = useState(null);
+  const value = useMemo(() => ({ <%= h.inflection.camelize(values.context, true) %>, set<%= values.context %> }), [<%= h.inflection.camelize(values.context, true) %>, set<%= values.context %>]);
 
-  return <<%= name %>.Provider value={value}>{children}</<%= name %>.Provider>;
+  return <<%= values.context %>.Provider value={value}>{children}</<%= values.context %>.Provider>;
 }
 
-export function use<%= name %>() {
-  const context = useContext(<%= name %>);
+export function use<%= values.context %>() {
+  const context = useContext(<%= values.context %>);
   if (!context) {
-    throw new Error(`use<%= name %> must be used within a <%= name %>Provider`);
+    throw new Error(`use<%= values.context %> must be used within a <%= values.context %>Provider`);
   }
   return context;
 }
