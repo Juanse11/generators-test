@@ -1,6 +1,6 @@
 module.exports = {
   
-  prompt: ({ inquirer, prompter }) => {
+  prompt: ({ inquirer }) => {
     return inquirer
       .prompt({
         type: 'multiselect',
